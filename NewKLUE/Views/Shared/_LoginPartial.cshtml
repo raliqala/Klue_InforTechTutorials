@@ -1,0 +1,88 @@
+﻿@using Microsoft.AspNet.Identity
+@using NewKLUE.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+     
+<ul class="nav navbar-nav navbar-right">
+    @{
+        var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+        var displayNameClaim = claimsIdentity != null
+            ? claimsIdentity.Claims.SingleOrDefault(x => x.Type == ApplicationUser.DisplayNameClaimType)
+            : null;
+        var nameToDisplay = displayNameClaim == null ? User.Identity.Name : displayNameClaim.Value;
+    }
+
+    <li><img style="border-radius: 100px; margin-top: 8px; margin-bottom: 0px;" src="@Url.Action("UserPhotos", "Home" )" height="35" width="35" /></li>
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span> </span> <span>@nameToDisplay</span> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">You are logged in as <span style="background-color: green;">@nameToDisplay</span></a></li>
+            <li class="divider"></li>
+            @if (User.IsInRole("Tutor"))
+    {
+        <li><a href="@Url.Action("Index", "Class")"><i class="glyphicon glyphicon-book"></i><span> </span>My ClassRoom</a></li>
+}
+            <li><a href="@Url.Action("Index", "Users")"><i class="glyphicon glyphicon-user"></i><span> </span>View Profile</a></li>
+            <li><a href="@Url.Action("Edit", "Users")"><i class="glyphicon glyphicon-pencil"></i><span> </span>Edit Profile</a></li>
+            <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="glyphicon glyphicon-lock"></i><span> </span>Change Password</a></li>
+            <li><a href="@Url.Action("Help", "GuidAndHelp")"><i class="glyphicon glyphicon-question-sign"></i><span> </span>Help</a></li>
+            <li><a href="@Url.Action("Create", "FeedBack")"><i class="glyphicon glyphicon-pencil"></i><span> </span>FeedBack</a></li>
+            <li><a href="@Url.Action("Create", "ReportProblem")"><i class="glyphicon glyphicon-pencil"></i><span> </span>Report Problem</a></li>
+            @if (User.IsInRole("Tutor"))
+    {
+        <li><a href="@Url.Action("Help", "GuidAndHelp")"><i class="glyphicon glyphicon-question-sign"></i><span> </span>Guid</a></li>
+        <li><a href="@Url.Action("Edit", "Settings")"><i class="glyphicon glyphicon-cog"></i><span> </span>Settings</a></li>
+}
+            <li class="divider"></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="glyphicon glyphicon-log-out"></i><span> </span>Logout</a></li>
+        </ul>
+    </li>
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+           <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+           <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+
+
+    @*<img style="border-radius: 100px; margin-top: -1px; margin-bottom: 0px; margin-left: 0rem;" src="@Url.Action("UserPhotos", "Home" )" height="35" width="35" />*@
+
+@*<ul class="nav navbar-nav navbar-right">
+
+    @{
+        var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+        var displayNameClaim = claimsIdentity != null
+            ? claimsIdentity.Claims.SingleOrDefault(x => x.Type == ApplicationUser.DisplayNameClaimType)
+            : null;
+        var nameToDisplay = displayNameClaim == null ? User.Identity.Name : displayNameClaim.Value;
+    }
+
+    <li class="dropdown" style="padding-top: 1.6rem;">
+        <span class="dropdown-toggle" data-toggle="dropdown" style="margin-right: 3rem;">
+            @Html.ActionLink("Hello " + nameToDisplay + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })<span> </span><span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu" style="color: white;">
+            <li>@Html.ActionLink("Manage", "Index", "Manage")</li>
+            @if (User.IsInRole("Tutor"))
+            {
+                <li>@Html.ActionLink("Class Room", "ClassRoom", "Tutor")</li>
+                <li>@Html.ActionLink("Create Tutorial", "Index", "CreateTutorial")</li>
+            }
+            <li>@Html.ActionLink("Settings", "", "")</li>
+            <li>@Html.ActionLink("Profile", "Index", "Users")</li>
+            <li>@Html.ActionLink("Profile", "Index", "Users")</li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+        </ul>
+    </li>
+    <li style="margin-left: 1rem;"> <img style="border-radius: 100px; margin-top: 7px; margin-left: -3rem;" src="@Url.Action("UserPhotos", "Home" )" height="35" width="35" /></li>
+    @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>**@

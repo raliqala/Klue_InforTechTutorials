@@ -1,0 +1,194 @@
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using NewKLUE.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .profile {
+        position: relative;
+        top: -12rem;
+        left: 1em;
+    }
+
+    .name {
+        position: relative;
+        top: 2em;
+        left: 1.5em;
+    }
+
+    .moveup {
+        position: relative;
+        top: -13em;
+    }
+
+        .moveup span, .moveup p a {
+            font-size: 1.5rem;
+        }
+
+    .user-information {
+        position: relative;
+        top: -19em;
+    }
+
+        .user-information ul li {
+            list-style: none;
+            border: 0.5px solid #5e74b0;
+            border-radius: 3px;
+            width: 38%;
+            height: 2em;
+            margin-bottom: 1rem;
+            padding: 5px;
+            padding-left: 25px;
+        }
+
+    .edit a {
+        text-decoration: none;
+        padding: 5px;
+        background-color: #0320ce;
+        height: 2.5em;
+        width: 5em;
+        color: white;
+        border-radius: 3px;
+    }
+
+    .bioup {
+        position: relative;
+        top: -16em;
+        width: 45%;
+        height: 13em;
+        background-color: #b3bfe0;
+        padding: 5px;
+        padding-left: 1.5rem;
+    }
+</style>
+
+
+<div class="container">
+    @if (Request.IsAuthenticated)
+    {
+        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+        <div style="margin-top: 5rem;"></div>
+        <div class="jumbotron" style="border-radius: unset; height: 8em; background-color: #6978ca;">
+            <div class="col-md-offset-1 name">
+
+                <p style="color: black;">@currentUser.FirstName @currentUser.LastName</p>
+                <p style="color: black;">
+                    @if (User.IsInRole("Tutor"))
+                    {
+                        <span>Tutor @ViewBag.courses</span>
+                    }
+                    else
+                    {
+                        <span>Student</span>
+                    }
+                </p>
+
+            </div>
+
+        </div>
+        <div class="profile">
+            <h1 class="col-md-offset-0">
+                <img src="@Url.Action("UserPhotos", "Home")" style="width:150px;height:150px; background: #FFFFFF;border-radius: 5px;" />
+            </h1>
+        </div>
+        <div class="col-md-offset-2 moveup">
+
+            @if (@currentUser.EmailConfirmed == true)
+            {
+                <span>Email status</span> <p class="text-success">Email is confirmed</p>
+            }
+            else
+            {
+                <span>Email status</span> <br /> <p class="text-danger">Email not confirmed <a target="_blank" href="https://mail.google.com/mail/u/0/#inbox">Please confirm your email</a> </p>
+            }
+
+        </div>
+
+        <div class="col-md-offset-6 bioup">
+            <h3>My Bio</h3>
+            <p>@currentUser.UserBio</p>
+        </div>
+
+        <div class="col-md-offset-0 user-information">
+
+            <ul>
+                <li>User Name: @currentUser.UserName</li>
+                <li>Email: @currentUser.Email</li>
+                <li>Country: @currentUser.Country</li>
+                <li>Region: @currentUser.Region</li>
+                <li>Gender: @currentUser.Gender</li>
+                <li>ID: @currentUser.Id</li>
+                @if (User.IsInRole("Tutor"))
+                {
+                    <li>Company Name: @currentUser.CompanyName</li>
+                }
+            </ul>
+
+            <p class="col-md-offset-0 edit">
+                @Html.ActionLink("Edit your profile", "Edit")
+                @Html.ActionLink("View your courses", "Details")
+            </p>
+        </div>
+
+    }
+
+    <div>
+
+    </div>
+
+</div>
+<div style="margin-bottom: -8em;"></div>
+
+@*
+        <strong>Your Bio</strong> <p>@currentUser.UserBio<br></p>
+                        <strong>Your ID</strong> <p></p>
+
+                        if ()
+                        {
+
+                        }
+                        else
+                        {
+                            <strong>Email status</strong> <p class="text-danger">Email not confirmed <a target="_blank" href="https://mail.google.com/mail/u/0/#inbox">Please confirm your email</a> </p>
+                        }
+
+                    }
+                    else
+                    {
+                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                        var currentUser = manager.FindById(User.Identity.GetUserId());
+                        <strong>UserName</strong> <h4>@currentUser.UserName</h4>
+                        <strong>Email</strong> <p>@currentUser.Email</p>
+                        <strong>First Name</strong> <p>@currentUser.FirstName</p>
+                        <strong>Last Name</strong> <p>@currentUser.LastName</p>
+                        <strong>Country</strong> <p>@currentUser.Country</p>
+                        <strong>Region</strong> <p>@currentUser.Region</p>
+                        <strong>Genda</strong> <p>@currentUser.Gender</p>
+                        <strong>Your Bio</strong> <p></p>
+                        <strong>Company Name</strong> <p></p>
+                        <strong>Your Website Url</strong> <p><a target="_blank" href="http://@currentUser.WebUrl">@currentUser.WebUrl</a></p>
+                        <strong>Your ID</strong> <p>@currentUser.Id</p>
+                        if (@currentUser.EmailConfirmed == true)
+                        {
+                            <strong>Email status</strong> <p class="text-success">Email is confirmed</p>
+                        }
+                        else
+                        {
+
+                        }
+
+
+                    }
+                }
+
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+
+*@

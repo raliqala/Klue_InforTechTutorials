@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    .ProgrammingLinks ul{
+        display: inline-flex;
+        list-style: none;
+    }
+        .ProgrammingLinks ul li a {
+            text-decoration: none;
+            background-color: #2246f2;
+            color: white;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: unset;
+            margin-left: 1rem;
+            width: 10em;
+        }
+    .ProgrammingLinks ul{
+        width: 25rem;
+    }
+</style>
+
+<div style="margin-top:5rem;"></div>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" style="border-radius: unset;">
+            <div>Programming courses</div>
+        </div>
+    </div>
+    </div>
+
+<div class="container">
+    <h2>Programming courses</h2>
+    <p>Click any button to access any course:</p>
+    <div class="btn-group btn-group-justified">
+        <a href="@Url.Action("CSharp", "ProgrammingCourses")"  class="btn btn-primary">C#</a>
+        <a href="@Url.Action("CPlusPlus", "ProgrammingCourses")"  class="btn btn-primary">C++</a>
+        <a href="@Url.Action("C", "ProgrammingCourses")"  class="btn btn-primary">C</a>
+        <a href="@Url.Action("Java", "ProgrammingCourses")"  class="btn btn-primary">Java</a>
+        <a href="@Url.Action("JavaScript", "ProgrammingCourses")"  class="btn btn-primary">JavaScript</a>
+        <a href="@Url.Action("PHP", "ProgrammingCourses")"  class="btn btn-primary">PHP</a>
+        <a href="@Url.Action("ObjectC", "ProgrammingCourses")"  class="btn btn-primary">Object C</a>
+        <a href="@Url.Action("Ruby", "ProgrammingCourses")"  class="btn btn-primary">Ruby</a>
+        <a href="@Url.Action("Bash", "ProgrammingCourses")"  class="btn btn-primary">Bash</a>
+        <a href="@Url.Action("FSharp", "ProgrammingCourses")"  class="btn btn-primary">F#</a>
+        <a href="@Url.Action("HTML", "ProgrammingCourses")"  class="btn btn-primary">HTML</a>
+        <a href="@Url.Action("CSS", "ProgrammingCourses")"  class="btn btn-primary">CSS</a>
+        <a href="@Url.Action("Python", "ProgrammingCourses")"  class="btn btn-primary">Python</a>
+        <a href="@Url.Action("Ruby", "ProgrammingCourses")"  class="btn btn-primary">Ruby</a>
+    </div>
+</div>
+
+<div style="margin-bottom: 5rem;"></div>

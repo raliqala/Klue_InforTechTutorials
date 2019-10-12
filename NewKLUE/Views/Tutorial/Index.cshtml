@@ -1,0 +1,107 @@
+﻿@model IEnumerable<NewKLUE.Models.Tutorial>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .myp p {
+        display: inline-flex;
+        margin-left: 2rem;
+    }
+</style>
+
+<div style="margin-top: 5rem;"></div>
+<div class="container">
+    @*<div class="row">
+        <div class="jumbotron" style="border-radius: unset; height: 60%">
+            <div>
+                <h3>Create tutorial</h3>
+            </div>
+        </div>
+    </div>*@
+    @*<div class="row">
+        <div class="col-md-offset-4 myp">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <p>
+                @Html.ActionLink("Read guid", "Create")
+            </p>
+        </div>
+    </div>*@
+
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoursesName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Topic)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CoursesName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Topic)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                       
+                        @Html.ActionLink("Details", "Details", new { id = item.TutorialId })
+                       
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $('.deleteItem').click(function (e) {
+           e.preventDefault();
+           var $ctrl = $(this);
+           if (confirm('Do you really want to delete this item?')) {
+               $.ajax({
+                   url: '@Url.Action("Delete")',
+                   type: 'POST',
+                   data: { id: $(this).data('id') }
+               }).done(function (data) {
+                   if (data.Result === "OK") {
+                       $ctrl.closest('tr').remove();
+                   }
+                   else if (data.Result.Message) {
+                       alert(data.Result.Message);
+                   }
+               }).fail(function () {
+                   alert("There is something wrong. Please try again.");
+               })
+
+           }
+       });
+</script>
+}

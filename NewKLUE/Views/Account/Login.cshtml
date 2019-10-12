@@ -1,0 +1,163 @@
+﻿@using NewKLUE.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+<div class="clearfix" style="padding: 2rem;"></div>
+<div class="icon-fav container">
+    <div class="row">
+        <div class="col-md-offset-4"> 
+            <h3><span style="color:blue;">{</span><span style="color: deeppink;">Infor</span><span style="color: limegreen;">Tech</span><span style="color:black;">Tutorials</span><span style="color:blue;">}</span></h3>
+        </div>
+    </div>
+</div>
+
+<style>
+    .login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.login-form-1{
+    padding: 5%;
+    background: #8fafde;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+.login-form-2{
+    padding: 5%;
+    background-image: url(/images/353626-PAXRPN-798.jpg);
+    background-size: cover;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    height: 44.5rem;
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+form {
+    position: relative;
+    top: -2rem;
+    left: 6rem;
+}
+.login-form-1{
+    height: 44.5rem;
+}
+form #p-reg a, #p-fog a{
+    color: white;
+}
+form #p-reg a:hover, #p-fog a:hover{
+    color: black;
+}
+
+</style>
+
+
+@*<div class="clearfix" style="padding: 2rem;"></div>*@
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3 style="margin-top: -2rem">Log in and get started</h3>
+            @*<section id="loginForm" class="login">*@
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger col-md-6 col-md-offset-2" })
+                <div class="form-group">
+                    
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                 
+                </div>
+                <div class="form-group">
+                   
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    
+                </div>
+              
+                <div class="form-group">
+                        <input type="submit" value="Log in" class="btnSubmit" />
+                </div>
+                  <div class="form-group">
+                    <div class="col-md-5">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+
+                <p id="p-reg">@Html.ActionLink("New user? Register", "Register") </p>   <p id="p-fog"> @Html.ActionLink("Forgot your password?", "ForgotPassword")</p>
+             }
+        </div>
+             <div class="col-md-6 login-form-2">
+                 <div class="back">
+                     @*<h3>Login for Form 2</h3>*@
+                     <form>
+                         @*<div class="form-group">
+                             <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                         </div>
+                         <div class="form-group">
+                             <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                         </div>
+                         <div class="form-group">
+                             <input type="submit" class="btnSubmit" value="Login" />
+                         </div>
+                         <div class="form-group">
+                             <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>*@
+                         @*</div>*@
+                     </form>
+                 </div>
+                </div>
+    </div>
+</div>
+<div class="line" style="margin-top: 3rem; margin-bottom: 6rem;">
+    <hr />
+</div>
+
+    @*</div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

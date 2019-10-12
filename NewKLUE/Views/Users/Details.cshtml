@@ -1,0 +1,28 @@
+﻿@model NewKLUE.Models.UsersViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="margin-top: 10rem;"></div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+           Your Courses:
+        </dt>
+        <dd>
+            @foreach (var item in Model.Programming)
+            {
+                if (item.Checked)
+                {
+                    <div>@item.Name</div>
+                }
+            }
+        </dd>
+    </dl>
+</div>
+
+<div class="col-md-offset-1">
+    @Html.ActionLink("Go back", "Index")
+</div>
+<div style="margin-bottom: 5rem;"></div>

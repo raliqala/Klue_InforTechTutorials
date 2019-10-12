@@ -1,0 +1,136 @@
+﻿@*@model NewKLUE.Models.IndexViewModel*@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    form .texbox input[type="text"]{
+        height: 3rem;
+        width: 30rem;
+        border: none;
+        border-radius: 0px;
+    }
+   form .texbox input[type=submit] {
+        padding: 5px 15px;
+        background: #1e73f7;
+        border: 0 none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 0px;
+        color: white;
+        margin-left: -2px;
+    }
+    .feedback a {
+        background-color: #1e73f7;
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+        /*text-transform: uppercase;*/
+        border-radius: unset;
+        border: none;
+    }
+    .feedback {
+        margin-top: -3rem;
+        margin-left: 2rem;
+    }
+</style>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="" style="margin-top: 7rem;"></div>
+<div class="col-md-offset-8">
+    @using (Html.BeginForm("Index", "Search", null, FormMethod.Post))
+    {
+        <p class="texbox">
+            @Html.TextBox("SearchString") 
+            <input type="submit" value="Search"  />
+        </p>
+    }
+</div>
+        <div class="feedback">
+            <a href="@Url.Action("Create","FeedBack")">FeedBack</a>
+        </div>
+  
+
+<div id="hero" style="background-image: url(/images/5570.jpg)">
+    <div class="hero">
+        <div class="col-md-offset-0">
+            <div class="follow">
+                <ul>
+                    <li style="color: white; margin-bottom: -2rem; margin-left: -2rem;"><h4>Find us on!</h4></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-md-offset-3">
+            <div class="welcome">
+                <h3><span style="font-size: 4rem;">Welcome to InforTechTutorials</span> <br /> <span style="font-size: 3rem; margin-left: 8rem">a place to tearch and learn</span></h3>
+                <a href="@Url.Action("About", "Home")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Learn more</a>
+                @*<p>@DateTime.Now © InforTechTutorials </p>*@
+            </div>
+        </div>
+
+        <div class="col-md-offset-8 col-md-4">
+            <div class="infortech">
+                <h3 style="color:  #1e73f7 ">Information Technology Tutorials</h3>
+                <p style="font-size: 16px;">
+                    Informatio technology tutorials is a platform for it tutoring was for peaple who are willing to learn and tearch in a user friendly environment where students and tutor can interact freely
+                </p>
+                <a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Become a Tutor or Student Now!</a>
+            </div>
+        </div>
+
+        <div class="col">
+            <div>
+
+            </div>
+        </div>
+        <div class="col">
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3">
+            <h3 style="font-size: 3rem; margin-top: 5rem; margin-bottom: 5rem; color: black;">Get started become a Tutor or a Student in <i class="fas fa-arrow-down fa-0x" area-hidden="true"></i></h3>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2" id="icons-font">
+            <div id="IconRow" class="row text-center"></div>
+            <div class="col-md-4" id="prog">
+                <i class="fas fa-code fa-5x" area-hidden="true"></i>
+                <h2>Programming</h2>
+            </div>
+            <div class="col-md-4" id="net">
+                <i class="fas fa-signal fa-5x" area-hidden="true"></></i>
+                <h2>Networks</h2>
+            </div>
+            <div class="col-md-4" id="supp">
+                <i class="fas fa-user-cog fa-5x" area-hidden="true"></></i>
+                <h2>Support Services</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-bottom: 5rem;"></div>
+<button>@ViewData["UsersCount"] users are registered on this site</button>

@@ -1,0 +1,402 @@
+﻿*{
+    margin:0;
+    padding:0;
+    
+}
+.blocked {
+    width: 500px;
+    height: 40px;
+    background-color: red;
+}
+a:hover{
+    text-decoration: unset;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    list-style: none;
+    background-color: #1d1b1b;
+    color: white;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+.dropdown-toggle a{
+    color: whitesmoke;
+}
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: white;
+    white-space: nowrap;
+}
+
+.sap span:before {
+    content: " ";
+    display: inline-block;
+}
+
+body {
+    background-color: #a3bdca;
+}
+
+.form-group .form-control{
+    border-radius: 0px;
+}
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.student-name{
+      margin-top: -3rem;
+      margin-left: 30rem;
+}
+
+
+
+.h2heading h2{
+    text-align: center;
+    font-family: serif;
+    font-size: 4rem;
+    color:black;
+    margin-bottom: 2rem;
+}
+
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.428571429;
+    border: 1px solid black;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    color: black;
+    background-color: gray;
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+   border-color: dimgray;
+   background-color: #4169e1;
+   color: white;
+}
+.nav-tabs > li.active > a:active{
+    border: none;
+}
+.nav-tabs > li > a > .differ{
+    background-color: darkorchid;
+}
+div .span-align span{
+    display:grid block;
+    left: 109rem;
+}
+/*.form{
+    margin-left: 15rem;
+}*/
+#hero .hero {
+    background-color: rgba(0,0,0,0.5);
+    height: 700px;
+    width: 100%;
+}
+.follow ul li {
+    list-style: none;
+    padding-bottom: 1.5rem;
+}
+
+.follow{
+    padding-top: 18rem;
+    margin-left: 4rem;
+}
+.follow ul li .fab{
+    font-size: 4rem;
+}
+.follow ul li .fab:hover {
+    cursor: pointer;
+}
+
+.infortech p {
+    /*text-align: justify;
+    margin: 0 0 1px;*/
+    color: #e6e6e6;
+}
+.infortech{
+    margin-top: 8rem;
+}
+
+.welcome {
+    margin-top: -35rem;
+    margin-left: 8rem;
+}
+.welcome h3 span{
+    color:  #1e73f7 ;
+}
+
+.welcome .btn-primary{
+    background-color: rgba( 0, 0, 0 , 0.1);
+    color: white;
+    border: 1px solid blue;
+    font-size: 2rem;
+    /*height: 4rem;
+    padding: 5px;*/
+    margin-left: 20rem;
+    border-radius: 0;
+}
+
+.infortech .btn-primary {
+    background-color: rgba( 0, 0, 0, 0.5);
+    color: rgb(0, 93, 255);
+    border: 1px solid blue;
+    font-size: 2rem;
+    /*height: 4rem;
+    padding: 5px;*/
+    margin-left: 2rem;
+    border-radius: 0;
+}
+.welcome .btn-primary:focus,
+.welcome .btn-primary:hover,
+.infortech .btn-primary:focus,
+.infortech .btn-primary:hover {
+    border: 1px solid #007dec;
+    background-color: rgba(38, 79, 248, 0.5);
+    color: white;
+    transition: 0.5s ease-in-out;
+}
+
+.follow ul li .fa-facebook {
+    color: #225EFE;
+}
+.follow ul li .fa-instagram {
+    color: deeppink;
+}
+.follow ul li .fa-twitter {
+    color: deepskyblue;
+}
+.follow ul li .fa-youtube {
+    color: red;
+}
+.follow ul li .fa-google-plus {
+    color: firebrick;
+}
+
+
+.form-horizontal h4{
+    font-size: 2rem;
+}
+
+
+span .movep p {
+    display: inline-flex;
+    margin-left: 3rem;
+    padding-top: 0rem;
+    padding-left: 2.5rem;
+}
+
+/*section a {
+    color: #02d030;
+}
+.form-horizontal{
+    margin-right: -5rem;
+}*/
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto');
+.icon-fav h3 {
+    margin-top: 7%;
+    font-family: "Lato", "Open+Sans", "Roboto";
+    font-size: 4rem;
+}
+/**********/
+
+
+.container .row .buttons a {
+    border: none;
+    border-radius: unset;
+    background-color: #5380EE;
+}
+/********/
+
+/*Footer*/
+
+/**********/
+#hero {
+    margin-top: 2rem;
+    background-image: url(/Images/lamp-3121677_1920.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-color: black;
+    height: 700px;
+    
+}
+.container #icons-font .fas {
+    /*color: red;*/ 
+}
+
+
+
+.container #icons-font #prog h2 {
+    margin-left: -4.8rem;
+    color: black;
+}
+
+.container #icons-font #supp h2 {
+    margin-left: -7rem;
+    color: black;
+}
+
+.container #icons-font #net h2 {
+    margin-left: -3rem;
+    color: black;
+}
+
+.container #icons-font #prog .fas {
+    color: midnightblue;
+}
+.container #icons-font #net .fas {
+    color: green;
+}
+.container #icons-font #supp .fas {
+    color: navy;
+}
+
+
+/*Line test 1*/
+/*.line-in-middle {
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(to right, transparent 0%, transparent calc(50% - 0.81px), black calc(50% - 0.8px), black calc(50% + 0.8px), transparent calc(50% + 0.81px), transparent 100%);
+}*/
+
+/*Line test 2*/
+.block {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    
+    margin-left: -8.8rem;
+}
+.block:before {
+      content:"";
+      width:1px;
+      height:100%;
+      display:block;
+      left:50%;
+      position:absolute;
+	    background-image: -webkit-linear-gradient(top, #fff, #000, #fff);
+      background-image: -moz-linear-gradient(top, #fff, #000, #fff);
+      background-image: -ms-linear-gradient(top, #fff, #000, #fff);
+      background-image: -o-linear-gradient(top, #fff, #000, #fff);
+      background-image: linear-gradient(top, #fff, #000, #fff);
+	}
+
+/*image in register*/
+/*.regSGV img {
+    margin-bottom: -59rem;
+    position: relative;
+}*/
+/*register button*/
+/*.container #register {
+    border: none;
+    border-radius: 0px;
+    background-color: #0031ff;
+    color: white;
+}*/
+/*.container #register:hover{
+    background-color:#001fa2;
+    transition: 0.5s ease-in-out;
+}*/
+
+/*login button*/
+/*.container #login {
+    border: none;
+    border-radius: 0px;
+    background-color: #0031ff;
+    color: white;
+}*/
+/*.container #login:hover{
+    background-color:#001fa2;
+    transition: 0.5s ease-in-out;
+}*/
+/*#backimg {
+    background-image: url(~/Images/klueimg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-left: 6rem;
+    overflow: hidden;
+    height: 400px;
+    width: 600px;
+    margin-bottom: -55rem;
+}*/
+
+/*Help*/
+.help-nav ul {
+    list-style: none;
+}
+.help-nav ul li{
+    display: block;
+}
+.help-nav ul li ul{
+    display: none;
+}
+
+.help-nav ul li:hover > ul,
+.help-nav ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+.help-nav ul li a{
+    text-decoration: none;
+    padding: 5px;
+    background-color: #0a1198;
+    border-radius: 2px;
+    border: unset;
+    color: white;
+}
+.help-nav ul li{
+    margin-bottom: 1em;
+}
+.help-nav ul li ul li{
+    margin-bottom: 0.5em;
+}
+.help-nav ul li ul li a{
+    text-decoration: none;
+    padding: 5px;
+    background-color: #6506ee;
+    border: unset;
+    color: white;
+}
+.help-nav ul li ul{
+    margin-top: 1rem;
+    position:relative;
+    left: 25px;
+}
+
+.help-nav{
+    width: 20%;
+    height: inherit;
+    background-color: #4f5758;
+    padding: 10px;
+}

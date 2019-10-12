@@ -1,0 +1,140 @@
+﻿@model NewKLUE.Models.Tutorial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=05t05k9vio68e4a95ohmrmwlzn7bypx9pqa9ehjk23l0xwie"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            width: 1000,
+            theme: 'modern',
+            plugins: 'codesample preview advcode help',
+            toolbar: 'bold italic | preview | advcode | help',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css'
+            ],
+            codesample_content_css: "http://ourcodeworld.com/material/css/prism.css"
+        });
+    </script>
+    <style>
+        #datetime {
+            margin-top: 1.5rem;
+        }
+        #back-link a {
+            border-radius: 0px;
+            border: 2px solid black;
+            background-color: transparent;
+            color: black;
+        }
+        #back-link a:hover{
+            background-color: rgba(0,0,0,0.5);
+            color:aliceblue;
+        }
+        #back-link{
+            margin-top: 5rem;
+            margin-left: -1rem;
+        }
+        .jumbotron{
+            height: 25rem;
+            /*width: 70%;*/
+        }
+        dd ul {
+           list-style: none;
+        }
+        .courseName {
+            position: relative;
+            top: 4rem;
+        }
+    </style>
+    <div class="container">
+        <div class="jumbotron" style="border-radius: unset;">
+            <div>
+                <div class="courseName">
+                    <p style="font-size: 5rem;">@Html.DisplayFor(model => model.CoursesName) <span>Tutorial</span></p>
+                    <p style="font-size: 3rem;"><span>Topic: </span> @Html.DisplayFor(model => model.Topic)</p>
+                </div>
+            </div>
+        </div>
+
+            <div style="margin-left: -17.5rem;">
+                <dl class="dl-horizontal">
+                    <dd style="margin-top: 5rem; margin-bottom: 6rem; margin-left: 45%;">
+                        <ul>
+                            <li style="font-size: 3rem;">Description</li>
+                            <li style="margin-left: -55%;"><p style="font-size: 1.5rem;"> @Html.DisplayFor(model => model.Description)</p></li>
+                        </ul>
+                       
+                    </dd>
+                    <dd>
+                        @Html.TextAreaFor(model => model.Content)
+                    </dd>
+
+                    <dt style="margin-left: 10rem; margin-top: 1.5rem;">
+                        @Html.DisplayNameFor(model => model.CreatedOn): <span> </span>
+                    </dt>
+
+                    <dd id="datetime">
+                         @Html.DisplayFor(model => model.CreatedOn) <span> by @Html.DisplayFor(model => model.User.FirstName)</span> <span style="margin-left: 0.5rem"> </span> @if (User.Identity.IsAuthenticated)
+                {<span class="likebtn-wrapper" data-i18n_like="Like" data-ef_voting="grow" data-identifier="@Html.ViewContext.RouteData.Values["id"].ToString();" style="margin-top: -2px;">></span> }
+            else
+            { <span>Please @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) or @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) to Like this post.</span>}
+
+                </dl>
+            </div>
+                 <div>
+                <div>
+                    @if (User.Identity.IsAuthenticated) {
+
+                     <ul class="attachment">
+                    Downloadable file/s:
+                    @foreach (var item in Model.FileDetail)
+                     {
+                        <li style="list-style: none;">
+                            <a class="title" href="/Tutorial/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem"></a>
+                        </li>
+                      }
+                </ul>
+                }
+                else
+                {
+                     <span>Downloadable file/s: </span> <br/>
+                      <span>Please @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) or @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) to download tutorial files </span>
+                }
+                </div>
+            </div>
+                     @if (User.Identity.IsAuthenticated)
+            {<div id="disqus_thread" style="width: 70%;"></div>}
+                else { <span>Please @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) or @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) to  comment and share </span> }
+
+            <script>(function (d, e, s) { if (d.getElementById("likebtn_wjs")) return; a = d.createElement(e); m = d.getElementsByTagName(e)[0]; a.async = 1; a.id = "likebtn_wjs"; a.src = s; m.parentNode.insertBefore(a, m) })(document, "script", "//w.likebtn.com/js/w/widget.js");</script>
+            <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        var disqus_shortname = '@System.Configuration.ConfigurationManager.AppSettings["Domain"]';
+        var disqus_config = function () {
+            this.page.url = '@Request.Url.AbsoluteUri';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '@Html.ViewContext.RouteData.Values["id"].ToString();'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://klueinc.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+    @*<div class="fb-like" data-href="https://stackoverflow.com/questions/5304782/how-to-get-current-page-url-in-mvc-3" data-width="25" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>*@
+    <p class="col-md-offset-1" id="back-link">
+        <a href="@Url.Action("Index", "ProgrammingCourses")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go back</a>
+    </p>
+</div>

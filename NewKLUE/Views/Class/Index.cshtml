@@ -1,0 +1,192 @@
+﻿@model IEnumerable<NewKLUE.Models.Tutorial>
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using NewKLUE.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+     .profile {
+        position: relative;
+        top: -7em;
+        left: 1em;
+    }
+    .links{
+        margin-left: 5em;
+    }
+    .links .fa-facebook {
+        color: #225EFE;
+    }
+
+    .links .fa-github {
+        color: #1a1a1e;
+    }
+    
+    .links .fa-dribbble {
+        color: #f60650;
+    }
+
+    .links.fa-twitter {
+        color: deepskyblue;
+    }
+
+    .links .fa-youtube {
+        color: red;
+    }
+
+    .follow ul li .fa-google-plus {
+        color: firebrick;
+    }
+</style>
+
+@*<div style="margin-top: 5rem;"></div>*@
+
+<div class="container">
+    <div class="jumbotron" style="border-radius: unset; height: 20rem;">
+        <div>
+            <h2>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                        var currentUser = manager.FindById(User.Identity.GetUserId());
+                        <span style="margin-left: -1em;">@currentUser.FirstName  @currentUser.LastName's Class Room</span><br/><br />
+                        <spam class="links"><a target="_blank" href="@currentUser.Twitter"><i class="fab fa-twitter"></i></a>  <a target="_blank" href="@currentUser.Facebook"><i class="fab fa-facebook"></i></a> <a target="_blank" href="@currentUser.YouTube"><i class="fab fa-youtube"></i></a> <a target="_blank" href="@currentUser.Dribble"><i class="fab fa-dribbble"></i></a> <a target="_blank" href="@currentUser.GitHub"><i class="fab fa-github"></i></a></spam>
+                    }
+                }
+            </h2>
+        </div>
+
+    </div>
+      <div class="profile">
+            <h1 class="col-md-offset-0">
+                <img src="@Url.Action("UserPhotos", "Home" )" style="width:150px;height:150px; background: #FFFFFF;border-radius: 5px;" />
+            </h1>
+        </div>@*//end jumbotron*@
+      <div style="margin-top: -10em;"></div>
+    <div class="container">
+        <div class="btn-group btn-group-sm col-md-offset-4" style="margin-left: 30em;">
+            <span> <a href="@Url.Action("Guid", "GuidAndHelp")" class="btn btn-primary">Read the guid</a></span> <span style="margin-left: 1em;"></span> <span><a href="@Url.Action("Create", "Class")" class="btn btn-primary">Create tutorial</a></span>
+
+        </div>
+    </div>
+    <p class="text-success">@TempData["tuto"]</p>
+    <p class="text-success">@TempData["tutoup"]</p>
+    <div style="margin-bottom: 5rem;"></div>
+
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoursesName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Topic)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CoursesName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Topic)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TutorialId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.TutorialId }) |
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.TutorialId })*@
+                        <a href="javascript:void(0);" data-id="@item.TutorialId" class="deleteItem">Delete</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    $('.deleteItem').click(function (e) {
+           e.preventDefault();
+           var $ctrl = $(this);
+           if (confirm('Do you really want to delete this item?')) {
+               $.ajax({
+                   url: '@Url.Action("Delete")',
+                   type: 'POST',
+                   data: { id: $(this).data('id') }
+               }).done(function (data) {
+                   if (data.Result === "OK") {
+                       $ctrl.closest('tr').remove();
+                   }
+                   else if (data.Result.Message) {
+                       alert(data.Result.Message);
+                   }
+               }).fail(function () {
+                   alert("There is something wrong. Please try again.");
+               })
+
+           }
+       });
+    </script>
+}
+<div style="margin-bottom: 10rem;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

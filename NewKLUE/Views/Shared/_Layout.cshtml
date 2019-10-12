@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - InforTechTutorials</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link href="~/Content/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/bebasneueregular" type="text/css" />
+    
+    <link href="~/Assets/css/Footer-with-button-logo.css" rel="stylesheet" />
+
+</head>
+<body>
+    <script id="dsq-count-scr" src="//klueinc.disqus.com/count.js" async></script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("InforTechTutorials", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*@Html.ActionLink("Home", "Index", "Home")*@
+                    <li><a href="@Url.Action("Index", "Home")"><i style="font-size: 1.5rem;" class="glyphicon glyphicon-home"></i></a></li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Role", "Index", "Role")</li>*@
+                    @*<li>@Html.ActionLink("SupportServices", "Index", "SupportServices")</li>*@
+                    @*<li>@Html.ActionLink("Networks", "Index", "Networks")</li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Programming <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("CSharp", "ProgrammingCourses")">C#</a></li>
+                            <li><a href="@Url.Action("CPlusPlus", "ProgrammingCourses")">C++</a></li>
+                            <li><a href="@Url.Action("C", "ProgrammingCourses")">C</a></li>
+                            <li><a href="@Url.Action("Java", "ProgrammingCourses")">Java</a></li>
+                            <li><a href="@Url.Action("JavaScript", "ProgrammingCourses")">JavaScript</a></li>
+                            <li><a href="@Url.Action("PHP", "ProgrammingCourses")">PHP</a></li>
+                            <li><a href="@Url.Action("ObjectC", "ProgrammingCourses")">Object C</a></li>
+                            <li><a href="@Url.Action("Ruby", "ProgrammingCourses")">Ruby</a></li>
+                            <li><a href="@Url.Action("Bash", "ProgrammingCourses")">Bash</a></li>
+                            <li><a href="@Url.Action("FSharp", "ProgrammingCourses")">F#</a></li>
+                            <li><a href="@Url.Action("HTML", "ProgrammingCourses")">HTML</a></li>
+                            <li><a href="@Url.Action("CSS", "ProgrammingCourses")">CSS</a></li>
+                            <li><a href="@Url.Action("Python", "ProgrammingCourses")">Python</a></li>
+                            <li><a href="@Url.Action("Ruby", "ProgrammingCourses")">Ruby</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support Services <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("InstallationManagement", "SupportServicesCourses")">Installation Management </a></li>
+                            <li><a href="@Url.Action("SupportServices", "SupportServicesCourses")">Support Services </a></li>
+                            <li><a href="@Url.Action("CommunicationNetworks", "SupportServicesCourses")">Communication Networks </a></li>
+                            <li><a href="@Url.Action("GraphicalUserInterfaceDesign", "SupportServicesCourses")">Graphical User Interface Design </a></li>
+                            <li><a href="@Url.Action("SoftwareApplicationDevelopment", "SupportServicesCourses")">software application development</a></li>
+                            <li><a href="@Url.Action("ComputerSystemsandNetworks", "SupportServicesCourses")">computer systems and networks.</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Networking <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Mathematics", "NetworkingCourses")">Mathematics</a></li>
+                            <li><a href="@Url.Action("SystemsDevelopment", "NetworkingCourses")">Systems Development</a></li>
+                            <li><a href="@Url.Action("InternetIntranetandExtranet", "NetworkingCourses")">Internet, Intranet, and Extranet </a></li>
+                            <li><a href="@Url.Action("InformationSystemsinOrganizations", "NetworkingCourses")">Information Systems in Organizations</a></li>
+                            <li><a href="@Url.Action("DataCommunicationNetworks", "NetworkingCourses")">Data Communication Networks</a></li>
+                            <li><a href="@Url.Action("CommunicationNetwork", "NetworkingCourses")">Network Achitecture</a></li>
+                            <li><a href="@Url.Action("NetworkAchitecture", "NetworkingCourses")">Network Achitecture</a></li>
+                        </ul>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Tutor"))
+                        {
+                            <li>@Html.ActionLink("Class Room", "Index", "Class")</li>
+                        }
+                    }
+                    @Html.Partial("_LoginPartial")
+                    <li><a href="@Url.Action("Help", "GuidAndHelp")"> <i class="glyphicon glyphicon-question-sign"></i>Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        @RenderBody()
+
+
+
+
+        <footer id="myFooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3 class="logo"><a href="#"> <span style="color:#0031ff;">{</span><span style="color: deeppink;">Infor</span><span style="color: limegreen;">Tech</span><span style="color:white;">Tutorials</span><span style="color:blue;">}</span></a></h3>
+                        <p>
+                            took a galley of type and scrambled it to make a type specimen book
+                            . It has survived not only five centuries, but also the leap into
+                            electronic typesetting, remaining essentially
+                        </p>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Get started</h5>
+                        <ul>
+                            <li><a href="@Url.Action("Index", "ProgrammingCourses")">Programming</a></li>
+                            <li><a href="@Url.Action("Index", "NetworkingCourses")">Networking</a></li>
+                            <li><a href="@Url.Action("Index", "SupportServicesCourses")">Support Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Programming</h5>
+                        <ul>
+                            <li><a href="#">C-Sharp</a></li>
+                            <li><a href="#">C-Plus Plus</a></li>
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">Ruby</a></li>
+                            <li><a href="#">C</a></li>
+                            <li><a href="#">Objective C</a></li>
+                            <li><a href="#">PHP</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help desk</a></li>
+                            <li><a href="#">Forums</a></li>
+                        </ul>
+                    </div>
+                    <div class="social">
+                        <div class="social-networks">
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+
+                    </div>
+                    <div class="subscribe">
+                            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form" }))
+                            {
+                                
+                                @Html.TextBox("Email")
+
+                                <input type="submit" class="search-button" value="Subscribe" />
+
+                            }
+                        </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>
+                    <ul>
+                        <li><a href="#" class="twitter"><i style="font-size: 2rem; color:#00aced;" class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" class="facebook"><i style="font-size: 2rem; color:#0077e2;" class="fab fa-facebook"></i></a></li>
+                        <li><a href="#" class="google"><i style="font-size: 2rem; color:#971e1e;" class="fab fa-google-plus"></i></a></li>
+                        <li><a href="#" class="instagram"><i style="font-size: 2rem; color:#ff00dc;" class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </p>
+                <ul>
+                    <li><a href="@Url.Action("About","Home")">About Us</a></li>
+                    <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+                    <li><a href="@Url.Action("PrivacyPolice", "Home")">Privacy Policy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="@Url.Action("Create","ReportProblem")">Report a problem</a></li>
+                    <li><a href="@Url.Action("Create","FeedBack")">FeedBack</a></li>
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="@Url.Action("FAQ","Asked")">FAQ</a></li>
+                </ul>
+                <p style="color:lightgrey;">@DateTime.Now.Year © InforTechTutorials, All contents are copyright of their authors </p>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="~/Scripts/Prism/prism.js"></script>
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

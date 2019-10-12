@@ -1,0 +1,405 @@
+﻿@model NewKLUE.Models.Tutorial
+
+    @{
+        ViewBag.Title = "Create";
+
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        listItems.Add(new SelectListItem
+        {
+            Text = "C#",
+            Value = "C#",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "C++",
+            Value = "C++",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "C",
+            Value = "C",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "PHP",
+            Value = "PHP"
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Python",
+            Value = "Python",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Java",
+            Value = "Java",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "HTML",
+            Value = "HTML",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "CSS",
+            Value = "CSS",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "JavaScript",
+            Value = "JavaScript",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Object C",
+            Value = "Object C"
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "F#",
+            Value = "F#",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Bash",
+            Value = "Bash",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Visual Basic",
+            Value = "Visual Basic",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Ruby",
+            Value = "Ruby",
+        });
+        //this is SS and NW
+        listItems.Add(new SelectListItem
+        {
+            Text = "Installation Management",
+            Value = "Installation Management",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Support Services",
+            Value = "Support Services",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Communication Networks",
+            Value = "Communication Networks",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Software Application Development",
+            Value = "Software Application Development",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Computer Systems and Networks",
+            Value = "Computer Systems and Networks",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Graphical User Interface Design",
+            Value = "Graphical User Interface Design"
+        });
+
+        listItems.Add(new SelectListItem
+        {
+            Text = "Systems Development",
+            Value = "Systems Development",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Internet, Intranet, and Extranet",
+            Value = "Internet, Intranet, and Extranet",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Information Systems in Organizations",
+            Value = "Information Systems in Organizations",
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Mathematics",
+            Value = "Mathematics",
+        });
+
+        listItems.Add(new SelectListItem
+        {
+            Text = "Network Achitecture",
+            Value = "Network Achitecture",
+
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Data Communication Networks",
+            Value = "Data Communication Networks",
+        });
+
+        //topics
+        List<SelectListItem> list = new List<SelectListItem>();
+        list.Add(new SelectListItem
+        {
+            Text = "The activation stack",
+            Value = "The activation stack",
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Computer Architecture",
+            Value = "Computer Architecture",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Arrays",
+            Value = "Arrays",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Data Types",
+            Value = "Data Types"
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "For Loops",
+            Value = "For Loops",
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Functions",
+            Value = "Functions",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Loops",
+            Value = "Loops",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Interfaces",
+            Value = "Interfaces"
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "While Loops",
+            Value = "While Loops",
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Matrix info",
+            Value = "Matrix info",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Random Numbers",
+            Value = "Random Numbers",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Variables and Data",
+            Value = "Variables and Data"
+        });
+
+
+
+
+        list.Add(new SelectListItem
+        {
+            Text = "HTML Tables",
+            Value = "HTML Tables",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "HTML Forms",
+            Value = "HTML Forms"
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Multimedia and embedding",
+            Value = "Multimedia and embedding",
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Complex Selectors",
+            Value = "Complex Selectors",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Creating Lists",
+            Value = "Creating Lists",
+
+        });
+        list.Add(new SelectListItem
+        {
+            Text = "Opening the Box Model",
+            Value = "Opening the Box Model"
+        });
+
+
+
+    }
+
+    <style>
+        #cancel a {
+            background-color: #de4b4b;
+            color: white;
+            padding: 0.5em;
+            text-decoration: none;
+            /*text-transform: uppercase;*/
+            border-radius: unset;
+            border: none;
+            /*margin-bottom: 10rem;*/
+        }
+
+        .form-group .btn-submit input[type="submit"] {
+            background-color: #3a56d9;
+            color: white;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: unset;
+        }
+
+        .form-group textarea {
+            width: 50rem;
+            height: 100px;
+        }
+    </style>
+    
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=05t05k9vio68e4a95ohmrmwlzn7bypx9pqa9ehjk23l0xwie"></script>
+    <script>
+    tinymce.init({
+        selector: '#myeditor',
+        height: 350,
+        width: 1000,
+        theme: 'modern',
+        plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help',
+        toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+        toolbar: 'codesample',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ],
+        content_css: [
+            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+            '//www.tinymce.com/css/codepen.min.css'
+        ],
+        codesample_content_css: "http://ourcodeworld.com/material/css/prism.css"
+    });
+    </script>
+    <div style="margin-top: 5rem;"></div>
+    <div class="container">
+        <div class="jumbotron" style="border-radius: unset;">
+            <div class="col-md-offset-3">
+                <h1>Create a Tutorial</h1>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-offset-0" style="margin-left: -11rem;">
+                @using (Html.BeginForm("Create", "Tutorial", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CoursesName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(m => m.CoursesName, listItems, "--Please select course name--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CoursesName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Topic, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(m => m.Topic, list, "--Please select a topic--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="page">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10" style="grid-row-start: initial;">
+                                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(m => m.Content, new { @class = "form-control", name = "MyEditor", id = "myeditor" })
+                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FileDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @*<input type="file" name="file" id="file" multiple="multiple" />*@
+                                <input type="file" name="file" id="input-b8" accept=".txt,.docx,.doc,.rtf,.zip,.rar,.pptx,.ppt,.pdf" multiple="multiple" />
+                                @Html.ValidationMessageFor(model => model.FileDetail, "", new { @class = "text-danger" })
+                                <span id="input-b8"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10 btn-submit">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-offset-2" id="cancel">
+            <a style="margin-bottom: 5rem; position:relative; top: -6rem; margin-left: 3em;" href="@Url.Action("Index", "Class")" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Cancel</a>
+        </div>
+
+    </div>
+
+ @section Scripts
+{
+        @Scripts.Render("~/bundles/Script-custom-editor")
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+    $(document).on('ready', function () {
+        $("#input-b8").fileinput({
+            rtl: true,
+            dropZoneEnabled: false,
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    });
+        </script>
+}         

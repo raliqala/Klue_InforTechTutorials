@@ -1,0 +1,91 @@
+﻿@model NewKLUE.Models.ReportProblem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    form .form-group textarea {
+        width: 290px;
+        height: 97px;
+    }
+</style>
+
+
+<div style="margin-top: 10rem;"></div>
+
+<div class="container">
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+    <fieldset>
+        <legend>Report a problem</legend>
+        @using (Html.BeginForm(new { @class = "well form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Subject</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-subtitles"></i></span>
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Message</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            @Html.TextAreaFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email me</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            @*<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>*@
+                            @Html.EditorFor(model => model.IsChecked)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">Send <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </fieldset>
+</div>
+<div style="margin-bottom: 5rem;"></div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

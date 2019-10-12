@@ -1,0 +1,120 @@
+﻿@model PagedList.IPagedList<NewKLUE.Models.Tutorial>
+@using PagedList.Mvc;
+<div style="margin-top: 5rem;"></div>
+
+
+<style>
+    .searched ul{
+        list-style: none;
+    }
+   
+    form .texbox input[type="text"]{
+        height: 3rem;
+        width: 30rem;
+        border: none;
+        border-radius: 0px;
+    }
+   form .texbox input[type=submit] {
+        padding: 5px 15px;
+        background: #1e73f7;
+        border: 0 none;
+        cursor: pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 0px;
+        color: white;
+        margin-left: -2px;
+    }
+    .feedback a {
+        background-color: #1e73f7;
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+        /*text-transform: uppercase;*/
+        border-radius: unset;
+        border: none;
+    }
+    .feedback {
+        margin-top: -3rem;
+        margin-left: 2rem;
+    }
+    .wrap{
+        background-color: rgba(64, 106, 243, 0.25);
+        color: #131415;
+    }
+    .wrap #buutonVisit a{
+         background-color: rgba(30, 115, 247, 0.59);
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+         border-radius: 2px;
+    }
+</style>
+
+
+<div class="container">
+    <div style="margin-top: 3rem;"></div>
+    <div class="col-md-offset-8">
+        @using (Html.BeginForm("Index", "Search", null, FormMethod.Post))
+        {
+            <p class="texbox">
+                @Html.TextBox("SearchString")
+                <input type="submit" value="Search" />
+            </p>
+        }
+    </div>
+    <div class="feedback">
+        <a href="@Url.Action("Create", "FeedBack")">FeedBack</a>
+    </div>
+    @if (@ViewBag.Message != null)
+    {
+        <div style="margin-top: 3rem; text-align: center; font-size: 2rem;">
+            @ViewBag.Message
+        </div>
+    }
+    else
+    {
+         <div style="margin-top: 3rem; text-align: center; font-size: 2rem;">
+            @ViewBag.Message
+        </div>
+    }
+    
+    <div class="searched">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="wrap">
+                    <ul>
+                        <li style="font-size: 2rem;">Course: @Html.DisplayFor(modelItem => item.CoursesName)</li>
+                        <li style="font-size: 1.5rem;">Topic: @Html.DisplayFor(modelItem => item.Topic)</li>
+                        <li style="margin-left: 3rem; padding: 5px;">Discription: @Html.DisplayFor(modelItem => item.Description)</li>
+                        <li style="margin-left: 5rem;">
+                            Created on: @Html.DisplayFor(modelItem => item.CreatedOn) <span>By: <span style="background-color: rgba(98, 243, 186, 0.42);"> @Html.DisplayFor(modelItem => item.User.FirstName)</span></span>
+                            @if (item.User.UserPhoto.Length > 0)
+                            {
+                                <img src="data:image;base64,@System.Convert.ToBase64String(item.User.UserPhoto)" width="25" height="25" style="border-radius:100px;" />
+                            }
+                        </li>
+
+                        <li style="margin-left: 55rem;" id="buutonVisit">@Html.ActionLink("Details", "Details", new { id = item.TutorialId })</li>
+                        <li style="padding-bottom: 1rem;"> </li>
+                    </ul>
+                </div>
+            }
+        
+        }
+        else
+        {
+            <p>Sorry no data!!!</p>
+        }
+    </div>
+
+    <br />
+    <div class="col-md-offset-1">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>
+

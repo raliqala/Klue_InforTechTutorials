@@ -1,0 +1,193 @@
+﻿@model NewKLUE.Models.RegisterViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Register";
+
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Female",
+        Value = "Female"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Male",
+        Value = "Male",
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Rather not say",
+        Value = "Rather not say"
+    });
+}
+
+@*listItems.Add(new SelectListItem
+    {
+        Text = "Other",
+        Value = "Other",
+
+    });*@
+
+<style>
+    .main{
+ 	padding: 40px 0;
+}
+.main input,
+.main input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 400px;
+    padding: 10px 40px;
+	background:#8fafde;
+	    color: #FFF;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+overflow: hidden;
+}
+span.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
+}
+.pil a{
+    color: white;
+}
+.pil a:hover{
+    color: black;
+    text-align: center;
+}
+form{
+    margin-left: 1.8rem;
+}
+</style>
+<div style=""></div>
+<div class="icon-fav container">
+    <div class="row">
+        <div class="col-md-offset-4">
+            <h3><span style="color:blue;">{</span><span style="color: deeppink;">Infor</span><span style="color: limegreen;">Tech</span><span style="color:black;">Tutorials</span><span style="color:blue;">}</span></h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main">
+        <div class="main-center">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4 class="col-md-offset-2">Create a new account.</h4>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <label for="email">Please select your role</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                        @Html.DropDownListFor(m => m.RoleName, new SelectList(ViewBag.Roles, "value", "text", ViewBag.SelectedItem), new { @class = "form-control" })
+                        <span>@Html.ValidationMessageFor(m => m.RoleName, "", new { @class = "text-danger" })</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @*<label for="username">Username</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control input-md", @placeholder = "Enter your first name" } })
+                    </div>
+                    <span>@Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })</span>
+                </div>
+
+                <div class="form-group">
+                    @*<label for="username">Username</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                        @Html.TextBoxFor(m => m.Lastname, new { @class = "form-control", @placeholder = "Enter your last name" })
+                    </div>
+                    <span>@Html.ValidationMessageFor(m => m.Lastname, "", new { @class = "text-danger" })</span>
+                </div>
+
+                <div class="form-group">
+                    @*<label for="email">Your Email</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter your email" })
+                    </div>
+                    <span> @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })</span>
+                </div>
+
+                <div class="form-group">
+                    @*<label for="email">Your Gender</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></i></span>
+                        @Html.DropDownListFor(m => m.Gender, listItems, "--Select your gender--", new { @class = "form-control" })
+                    </div>
+                    <span> @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Country</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></i></span>
+                        @Html.DropDownListFor(m => m.Country, new SelectList(ViewBag.CountryList), new { @class = "form-control", })
+                    </div>
+                    <span>  @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    @*<label for="email">Your Region</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></i></span>
+                        @Html.TextBoxFor(m => m.Region, new { @class = "form-control", @placeholder = "Region/State/Province" })
+                    </div>
+                    <span>  @Html.ValidationMessageFor(m => m.Region, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    @*<label for="email">Your Password</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter Password" })
+                    </div>
+                    <span> @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })</span>
+                </div>
+                <div class="form-group">
+                    @*<label for="email">Re-Enter Password</label>*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    </div>
+                    <span>@Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Select profile picture</label>
+                    <div class="input-group">
+                        @*<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>*@
+                        <input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-lg-10">
+                        <input type="submit" class="btn btn-primary" value="Register" />
+                    </div>
+                </div>
+            }
+
+            <p class="col-md-offset-2 pil">
+                @Html.ActionLink("Already have an account login", "Login")
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--Jquery to fire a plugin method-->
+<!--Style Sheets-->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@*SupportServices*@
+
+<style>
+    .ProgrammingLinks ul {
+        display: inline-flex;
+        list-style: none;
+    }
+
+        .ProgrammingLinks ul li a {
+            text-decoration: none;
+            background-color: #2246f2;
+            color: white;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: unset;
+            margin-left: 1rem;
+            width: 10em;
+        }
+
+    .ProgrammingLinks ul {
+        width: 25rem;
+    }
+
+    .container .row-button a {
+        margin: 20rem;
+    }
+</style>
+
+<div style="margin-top:5rem;"></div>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" style="border-radius: unset;">
+            <div>Programming courses</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Support Services courses</h2>
+    <p>Click any button to access any course:</p>
+    <div class="btn-group btn-group-sm">
+        <a href="@Url.Action("InstallationManagement", "SupportServicesCourses")" class="btn btn-primary">Installation Management </a>
+        <a href="@Url.Action("SupportServices", "SupportServicesCourses")" class="btn btn-primary">Support Services </a>
+        <a href="@Url.Action("CommunicationNetworks", "SupportServicesCourses")" class="btn btn-primary">Communication Networks </a>
+        <a href="@Url.Action("GraphicalUserInterfaceDesign", "SupportServicesCourses")" class="btn btn-primary">Graphical User Interface Design </a>
+        <a href="@Url.Action("SoftwareApplicationDevelopment", "SupportServicesCourses")" class="btn btn-primary">software application development</a>
+        <a href="@Url.Action("ComputerSystemsandNetworks", "SupportServicesCourses")" class="btn btn-primary">computer systems and networks.</a>
+    </div>
+</div>
+
+<div style="margin-bottom: 5rem;"></div>

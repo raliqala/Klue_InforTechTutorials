@@ -1,0 +1,111 @@
+﻿@model IEnumerable<NewKLUE.Models.Tutorial>
+
+@{
+    ViewBag.Title = "GraphicalUserInterfaceDesign";
+}
+
+<style>
+    .contents ul {
+        list-style: none;
+    }
+
+    .contents {
+        background-image: url(https://images.unsplash.com/photo-1488628075628-e876f502d67a?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=);
+        background-size: cover;
+        height: 15em;
+        width: 24%;
+        background-color: rgba(0,0,0,0.5);
+        padding: 5px;
+        display: inline-flex;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        color: white;
+    }
+
+    #heros {
+        background-color: rgba(0,0,0,0.9);
+        height: 15em;
+        width: 24%;
+        z-index: 1000;
+    }
+
+    .contents #button-link a {
+        /*background-color: #1c2ebd;*/
+        position: relative;
+        bottom: -4rem;
+        color: white;
+        padding: 0.5em;
+        text-decoration: none;
+        border: 2px solid white;
+        border-radius: unset;
+        margin-left: 1rem;
+    }
+
+    #button-link {
+        position: relative;
+        /*top: 50px;*/
+        /*opacity: 0;*/
+        left: 5rem;
+        margin-left: -4rem;
+    }
+
+    #images img {
+        border: 1px solid white;
+        position: relative;
+        bottom: -6px;
+    }
+
+    #button-link:hover {
+        opacity: 1;
+    }
+
+    #images {
+        position: relative;
+        bottom: -7rem;
+        left: 3px;
+    }
+
+    #Cname {
+    }
+</style>
+
+<div style="margin-top:5rem;"></div>
+<div class="container">
+    <div class="jumbotron" style="height:50%; border-radius: unset;">
+        <div>
+            <div><h3>@Html.DisplayNameFor(Model => Model.CoursesName)</h3></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div><h3>@Html.DisplayNameFor(Model => Model.CoursesName)</h3></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="con">
+                @foreach (var item in Model)
+                {
+                    <div class="contents" id="heros">
+                        <ul style="background-color: rgba(0, 0, 0, 0.67);">
+                            <li id="Cname"><p><span>Course:</span> @Html.DisplayFor(modelItem => item.CoursesName)</p></li>
+                            <li> Topic: @Html.DisplayFor(modelItem => item.Topic)</li>
+                            <li id="button-link"> <span>@Html.ActionLink("View Tutorial", "Details", new { id = item.TutorialId })</span> <span>@Html.ActionLink("Visit classroom", "Details")</span></li>
+                            <li id="images">
+                                @if (item.User.UserPhoto.Length > 0)
+                                {
+                                    <img src="data:image;base64,@System.Convert.ToBase64String(item.User.UserPhoto)" width="40" height="40" style="border-radius:100px;" /> <span>CreatedOn: @Html.DisplayFor(modelItem => item.CreatedOn)</span> <span style="position:relative; top: -1.5rem; left: 4.5rem;">By: @Html.DisplayFor(modelItem => item.User.FirstName)</span>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-bottom: 10rem;"></div>
+
